@@ -1,0 +1,130 @@
+:root {
+  --bg: #060b12;
+  --panel: #0c141e;
+  --panel2: #111c29;
+  --line: #1c2c3f;
+  --text: #eaf4fb;
+  --muted: #8fa6ba;
+  --red: #1ea7e8;
+  --red2: #0a6cb0;
+  --ok: #2ecc71;
+  --warn: #f1c40f;
+  --radius: 12px;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Cairo', system-ui, sans-serif; font-size: 15px; }
+a { color: inherit; }
+button, input, select, textarea { font: inherit; color: inherit; }
+
+/* ---------- تخطيط ---------- */
+.layout { display: grid; grid-template-columns: 250px 1fr; min-height: 100vh; }
+.side { background: var(--panel); border-left: 1px solid var(--line); padding: 18px 14px; position: sticky; top: 0; height: 100vh; overflow: auto; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; margin-bottom: 18px; }
+.brand img { width: 40px; height: 40px; border-radius: 10px; object-fit: cover; }
+.biglogo { width: 120px; height: 120px; border-radius: 22px; object-fit: cover; background: var(--panel2); border: 1px solid var(--line); }
+.hero { width: 110px; height: 110px; border-radius: 24px; box-shadow: 0 0 40px rgba(30,167,232,.35); }
+.guildbox { display: flex; align-items: center; gap: 10px; padding: 10px; background: var(--panel2); border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 14px; cursor: pointer; }
+.guildbox img, .avatar { width: 34px; height: 34px; border-radius: 50%; background: var(--line); object-fit: cover; }
+.guildbox small { color: var(--muted); display: block; }
+.nav button { display: flex; gap: 10px; align-items: center; width: 100%; background: none; border: 0; padding: 10px 12px; border-radius: 10px; cursor: pointer; text-align: start; color: var(--muted); }
+.nav button:hover { background: var(--panel2); color: var(--text); }
+.nav button.active { background: linear-gradient(90deg, rgba(30,167,232,.22), transparent); color: #fff; box-shadow: inset -3px 0 0 var(--red); }
+.userbar { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); display: flex; gap: 10px; align-items: center; }
+.userbar .name { flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.main { padding: 26px 30px 90px; max-width: 1100px; width: 100%; }
+h1 { margin: 0 0 4px; font-size: 24px; }
+.sub { color: var(--muted); margin: 0 0 22px; }
+
+/* ---------- عناصر ---------- */
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; margin-bottom: 16px; }
+.card h3 { margin: 0 0 12px; font-size: 16px; }
+.grid { display: grid; gap: 14px; }
+.g2 { grid-template-columns: repeat(2, 1fr); }
+.g3 { grid-template-columns: repeat(3, 1fr); }
+.g4 { grid-template-columns: repeat(4, 1fr); }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field > label, .lbl { font-size: 13px; color: var(--muted); }
+.hint { font-size: 12px; color: var(--muted); }
+input[type=text], input[type=number], input[type=url], select, textarea {
+  background: var(--panel2); border: 1px solid var(--line); border-radius: 9px; padding: 9px 11px; width: 100%; outline: none;
+}
+input:focus, select:focus, textarea:focus { border-color: var(--red); }
+textarea { min-height: 84px; resize: vertical; }
+input[type=color] { width: 54px; height: 38px; padding: 2px; background: var(--panel2); border: 1px solid var(--line); border-radius: 9px; }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.switch { display: flex; align-items: center; gap: 10px; cursor: pointer; user-select: none; }
+.switch input { appearance: none; width: 40px; height: 22px; border-radius: 22px; background: #26384b; position: relative; cursor: pointer; transition: .15s; flex: none; }
+.switch input::after { content: ''; position: absolute; top: 3px; inset-inline-start: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; transition: .15s; }
+.switch input:checked { background: var(--red); }
+.switch input:checked::after { inset-inline-start: 21px; }
+.btn { background: var(--red); color: #03121d; border: 0; padding: 9px 16px; border-radius: 9px; cursor: pointer; font-weight: 600; }
+.btn:hover { filter: brightness(1.12); }
+.btn.ghost { background: var(--panel2); color: var(--text); border: 1px solid var(--line); }
+.btn.danger { background: #5b1620; color: #fff; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; max-height: 150px; overflow: auto; padding: 2px; }
+.chip { background: var(--panel2); border: 1px solid var(--line); border-radius: 20px; padding: 3px 11px; cursor: pointer; font-size: 13px; color: var(--muted); }
+.chip.on { background: rgba(30,167,232,.25); border-color: var(--red); color: #fff; }
+.tag { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 12px; background: var(--panel2); border: 1px solid var(--line); }
+.tag.open { color: var(--ok); border-color: rgba(46,204,113,.4); }
+.tag.closed { color: var(--muted); }
+.tag.ban, .tag.kick { color: #ff6b6b; }
+.tag.warn, .tag.timeout { color: var(--warn); }
+
+/* ---------- إحصائيات ---------- */
+.stat { background: var(--panel2); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; }
+.stat b { display: block; font-size: 28px; }
+.stat span { color: var(--muted); font-size: 13px; }
+.bars { display: flex; align-items: flex-end; gap: 10px; height: 140px; padding-top: 10px; }
+.bar { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 4px; font-size: 12px; color: var(--muted); }
+.bar div { width: 100%; background: linear-gradient(180deg, var(--red), var(--red2)); border-radius: 6px 6px 0 0; min-height: 2px; }
+.hbar { display: grid; grid-template-columns: 110px 1fr 36px; gap: 10px; align-items: center; margin: 7px 0; font-size: 13px; }
+.hbar .track { height: 9px; background: var(--panel2); border-radius: 9px; overflow: hidden; }
+.hbar .track i { display: block; height: 100%; background: var(--red); border-radius: 9px; }
+
+/* ---------- جداول ---------- */
+table { width: 100%; border-collapse: collapse; }
+th, td { text-align: start; padding: 10px 8px; border-bottom: 1px solid var(--line); font-size: 14px; }
+th { color: var(--muted); font-weight: 600; font-size: 13px; }
+tr.click { cursor: pointer; }
+tr.click:hover { background: var(--panel2); }
+.pager { display: flex; gap: 8px; justify-content: center; align-items: center; margin-top: 14px; color: var(--muted); }
+.empty { text-align: center; color: var(--muted); padding: 30px 0; }
+
+/* ---------- محادثة ---------- */
+.msgs { max-height: 520px; overflow: auto; display: flex; flex-direction: column; gap: 12px; }
+.msg { display: flex; gap: 10px; }
+.msg .avatar { width: 34px; height: 34px; flex: none; }
+.msg .meta { font-size: 12px; color: var(--muted); }
+.msg .txt { white-space: pre-wrap; word-break: break-word; }
+
+/* ---------- تحرير الأنواع ---------- */
+.trow { display: grid; grid-template-columns: 70px 1fr 1fr 1.4fr 40px; gap: 8px; margin-bottom: 8px; align-items: center; }
+.trow input { padding: 8px; }
+
+/* ---------- حفظ ---------- */
+.savebar { position: fixed; bottom: 0; inset-inline: 0; margin-inline-start: 250px; background: rgba(6,11,18,.92); backdrop-filter: blur(6px); border-top: 1px solid var(--line); padding: 12px 30px; display: flex; gap: 12px; align-items: center; justify-content: flex-end; z-index: 5; }
+.toast { position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%); background: #222; border: 1px solid var(--line); padding: 11px 20px; border-radius: 10px; z-index: 20; }
+.toast.err { border-color: #e5484d; background: #2a1014; }
+.toast.ok { border-color: var(--ok); }
+
+/* ---------- دخول واختيار سيرفر ---------- */
+.center { min-height: 100vh; display: grid; place-items: center; padding: 20px; }
+.login { text-align: center; max-width: 420px; }
+
+.gcards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; width: min(900px, 100%); }
+.gcard { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; text-align: center; cursor: pointer; }
+.gcard:hover { border-color: var(--red); }
+.gcard img { width: 64px; height: 64px; border-radius: 50%; background: var(--line); }
+
+/* ---------- موبايل ---------- */
+@media (max-width: 860px) {
+  .layout { grid-template-columns: 1fr; }
+  .side { position: static; height: auto; border-left: 0; border-bottom: 1px solid var(--line); }
+  .nav { display: flex; overflow: auto; gap: 4px; }
+  .nav button { width: auto; white-space: nowrap; }
+  .main { padding: 18px 14px 90px; }
+  .g2, .g3, .g4 { grid-template-columns: 1fr; }
+  .savebar { margin-inline-start: 0; padding: 12px 14px; }
+  .trow { grid-template-columns: 1fr 1fr; }
+}
